@@ -1,10 +1,10 @@
-# E-Commerce OOP
+# E-Commerce Backend App
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
 ## Description
 
-Internet retail, also known as **e-commerce**, is the largest sector of the electronics industry. This app, which functions from within the terminal command line, allows a ficticious company to create and manage their records in a MYSQL database. Written in Javascript, it uses Node.js, Express.js and Sequelize, it is deployed using Node.js with api interaction on Insomnia. 
+Internet retail, also known as **e-commerce**, is the largest sector of the electronics industry. This app, which functions from within the terminal command line, allows a ficticious company to create and manage their records in a MYSQL database. Written in Javascript, it uses Node.js, Express.js and Sequelize, and is deployed using Node.js. 
 
 
 ## User Story
@@ -24,7 +24,7 @@ SO THAT my company can compete with other e-commerce companies
 - [Contributing Guidelines](#contributing-guidelines)
 - [Tests](#tests)
 - [Languages, Skills and Credits](#languages-skills-and-credits)
-- [Screenshot and Walkthrough](#screenshot-and-walkthrough)
+- [Video Walkthrough](#video-walkthrough)
 - [Questions and Links](#questions-and-links)
 </details>
 
@@ -39,7 +39,8 @@ Seed the database using: npm run seed
 ```
 
 ## Usage
-From the root directory, type node or nodemon index.js
+From the root directory, type in 'node index.js'
+
 
 ## License
 Distributed under the **MIT** license.
@@ -53,26 +54,16 @@ There are currently no tests written for this application.
 ## Languages, Skills and Credits
 - Javascript
 - Node.js
-- [express](https://www.npmjs.com/package/express) webserver framework for Node.js
-- [sequelize](https://www.npmjs.com/package/sequelize) to execute SQL code and CRUD operations
-- [mysql2](https://www.npmjs.com/package/mysql2) to initialize the database
-- [dotenv](https://www.npmjs.com/package/dotenv) used to host credentials in the environment file 
+- [Express](https://www.npmjs.com/package/express) is the webserver framework for Node.js.
+- [Sequelize](https://www.npmjs.com/package/sequelize) is used to execute SQL code and CRUD operations.
+- [MYSQL2](https://www.npmjs.com/package/mysql2) is used to initialize the database.
+- [dotenv](https://www.npmjs.com/package/dotenv) is used to host credentials in the environment file. 
 
-## Screenshots and Video walkthrough
-- [Setting up and connecting to the database](https://)
-- [Creating, Reading, Updating and Deleting data in the database](https://)
-
-![In Insomnia, the user tests “GET tags,” “GET Categories,” and “GET All Products.”.](./Assets/13-orm-homework-demo-01.gif)
-
-The following animation shows the application's GET routes to return a single category, a single product, and a single tag being tested in Insomnia:
-
-![In Insomnia, the user tests “GET tag by id,” “GET Category by ID,” and “GET One Product.”](./Assets/13-orm-homework-demo-02.gif)
-
-The following animation shows the application's POST, PUT, and DELETE routes for categories being tested in Insomnia:
-
-![In Insomnia, the user tests “DELETE Category by ID,” “CREATE Category,” and “UPDATE Category.”](./Assets/13-orm-homework-demo-03.gif)
+## Video walkthrough
+- [Setting up and connecting to the database](https://drive.google.com/file/d/1qGAdNCsfExpdlSwJuoeDn5lGxsj8mAkk/view?usp=sharing)
+- [Creating, Reading, Updating and Deleting data using Insomnia](https://drive.google.com/file/d/1gaKlGrV2LU4pg7GPTo3Qt8Fdgc4ZnN0r/view?usp=sharing)
 
 
 ## Questions and Links
-[My Github repository](https:// )
+[My Github repository](https://github.com/amccorkl/E-Commerce_OOP)
 
