@@ -5,11 +5,9 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 
 // get all products
 router.get('/', async (req, res) => {
-  // find all products
-  // be sure to include its associated Category and Tag data
+  // find all products with its associated Category and Tag data
   try {
     const productData = await Product.findAll({ 
-      // should these be 2 different model statements?
       include: [{ model: Category}, { model: Tag, through: ProductTag }]
     });
     res.status(200).json(productData);
@@ -18,13 +16,10 @@ router.get('/', async (req, res) => {
   }
 });
 
-// get one product
+// get one product with its associated Category and Tag data
 router.get('/:id', async (req, res) => {
-  // find a single product by its `id`
-  // be sure to include its associated Category and Tag data
  try {
   const productData = await Product.findByPk(req.params.id, { 
-    // 2 different model objects?
     include:  [{ model: Category}, { model: Tag, through: ProductTag }]
   });
   if (!productData) {
@@ -50,7 +45,7 @@ router.post('/', (req, res) => {
  
   Product.create(req.body)
     .then((product) => {
-      // if there's product tags, we need to create pairings to bulk create in the ProductTag model
+      // if there are product tags, we need to create pairings to bulk create in the ProductTag model
       if (req.body.tagIds.length) {
         const productTagIdArr = req.body.tagIds.map((tag_id) => {
           return {
@@ -107,13 +102,12 @@ router.put('/:id', (req, res) => {
     })
     .then((updatedProductTags) => res.json(updatedProductTags))
     .catch((err) => {
-      // console.log(err);
       res.status(400).json(err);
     });
 });
 
+// delete one product by its `id` value
 router.delete('/:id', async (req, res) => {
-  // delete one product by its `id` value
   try {
     const productData = await Product.destroy({ 
       where: { id:req.params.id }
@@ -122,7 +116,7 @@ router.delete('/:id', async (req, res) => {
       res.status(404).json({ message: "No product found with that id." })
       return;
     }
-    res.status(200).json({ message: `Product with id ${req.params.id} successfully deleted`}); 
+    res.status(200).json({ message: `Product ${req.params.id} successfully deleted`}); 
   } catch (err) {
     res.status(500).json(err);
   }

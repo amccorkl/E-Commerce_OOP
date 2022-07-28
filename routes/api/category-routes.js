@@ -15,13 +15,12 @@ router.get("/", async (req, res) => {
   }
 });
 
+// find one category by its `id` value with associated Products
 router.get("/:id", async (req, res) => {
-  // find one category by its `id` value with associated Products
   try {
     const categoryData = await Category.findByPk(req.params.id, {
       include: [{ model: Product }],
     });
-
     if (!categoryData) {
       res.status(404).json({ message: "No category found with that id." });
       return; //delete the return from this line and move it up?
@@ -35,44 +34,48 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   // create a new category
   try {
-    const categoryData = await Category.create({ category_name: req.body.category_name, });
-    res.status(200).json(categoryData);
+    const categoryData = await Category.create({
+      category_name: req.body.category_name,
+    });
+    res
+      .status(200)
+      .json({ message: `category updated ${req.body.category_name}` });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-//response said wrong route, doesn't work yet
+// update a category by its `id` value
 router.put("/:id", async (req, res) => {
-  // update a category by its `id` value
   try {
-    const categoryData = await Category.update(
-      { category_name: req.body.category_name, },
-      { where: { id: req.params.id }, },
-    );
+    const categoryData = await Category.update(req.body, {
+      where: { id: req.params.id },
+    });
     if (!categoryData[0]) {
       res.status(404).json({ message: "No category found with that id" });
       return;
-    }
-    const updatedCategory = await Category.findByPk(req.params.id);
-    res.status(200).json({ message: `category updated ${updatedCategory}` });
+    } 
+    res
+      .status(200)
+      .json({ message: `category updated ${req.body.category_name}` });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-//response said wrong route, doesn't work yet
+// delete a category by its `id` value
 router.delete("/:id", async (req, res) => {
-  // delete a category by its `id` value
   try {
-    const categoryData = await Category.destroy(
-      { where: { id: req.params.id }, },
-    );
+    const categoryData = await Category.destroy({
+      where: { id: req.params.id },
+    });
     if (!categoryData) {
       res.status(404).json({ message: "No category found with that id." });
       return;
     }
-    res.status(200).json({ message: `Category with id ${req.params.id} successfully deleted.`, });
+    res.status(200).json({
+      message: `Category with id ${req.params.id} successfully deleted.`,
+    });
   } catch (err) {
     res.status(500).json(err);
   }
